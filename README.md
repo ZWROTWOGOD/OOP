@@ -29,8 +29,17 @@ print(car2.drive()) # Вывод: Blue Tesla едет!
 
     def get_score(self):
         return f"Student {self.name} has score {self.score}"
+    def set_score(self, new_score): 
+        if 0 <= new_score <= 100:
+             self.score = new_score
+             return f"Score updated to {self.score}"
+        else:
 
+             return "Invalid score! Must be between 0 and 100"
 student1 = Student("Anton", 70)
 student2 = Student("Anna", 87)
 print(student1.get_score())  # Вывод: Student Anton has score 70
-print(student2.get_score())  # Вывод: Student Anna has score 87
+print(student2.get_score())  # Вывод: Student Anna has score 87 
+print(student1.set_score(85))
+print(student1.get_score()) 
+# upd буду добавлять каждый день в код что то новое ))))
