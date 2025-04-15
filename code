@@ -19,3 +19,43 @@ print(student2.get_score())  # Вывод: Student Anna has score 87
 print(student1.set_score(85))
 print(student1.get_score()) 
 # upd буду добавлять каждый день в код что то новое ))))
+   
+
+
+
+class Runner:
+  def __init__(self, name, time, color, round=False):
+      self.name = name
+      self.place = None  # место пока не известно
+      self.time = time
+      self.round = round  # номер круга
+      self.color = color  # цвет спортсмена (для вывода на экран)
+
+  def __str__(self):
+      if self.round:
+          return f"{self.name} в {self.color} — провалился на {self.round} круге"
+      return f"{self.name} в {self.color} пробежал за {self.time} сек, {self.place} место"
+
+  @staticmethod
+  def sort_runners(runners):
+      valid_runners = [r for r in runners if not r.round]
+      valid_runners.sort(key=lambda x: x.time)
+      # Присваиваем места
+      for i, runner in enumerate(valid_runners, 1):
+          runner.place = i
+      return runners
+
+# Создаём список бегунов после определения класса
+runners = [
+  Runner("anton", 12.3, color="red"),
+  Runner("oleg", 10.5, color="blue", round=True),
+  Runner("dima", 12.5, color="green"),
+  Runner("sergey", 11.5, color="black"),
+  Runner("pavel", 17.3, color="yellow"),
+  Runner("vlad", 10.9, color="white"),
+]
+
+# Сортируем и выводим
+runners = Runner.sort_runners(runners)
+for runner in runners:
+  print(runner)
